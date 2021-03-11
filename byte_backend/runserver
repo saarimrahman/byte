@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# This file will locally start the server #
+
+# run the app
+python3 __init__.py;

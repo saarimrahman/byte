@@ -1,0 +1,20 @@
+name: shop-backend
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - flask
+  - flask-sqlalchemy
+  - numpy
+  - pandas
+  - pip
+  - pytest
+  - python
+  - pytorch
+  - scikit-learn
+
+  - pip:
+    - werkzeug
+    - Flask-Mail
+    - mysqlclient 
+    - pytest-ordering
