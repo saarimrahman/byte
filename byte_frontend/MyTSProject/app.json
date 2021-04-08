@@ -1,0 +1,12 @@
+{
+  "name": "MyTSProject",
+  "displayName": "MyTSProject",
+  "expo": {
+    "name": "MyTSProject",
+    "slug": "MyTSProject",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
