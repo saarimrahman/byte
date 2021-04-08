@@ -1,4 +1,4 @@
-# shop_backend
+# byte_backend
 Backend code for MedByte.
 
 ## Environment
@@ -20,21 +20,21 @@ is the topmost directory
 # Install the conda environments.
 conda env create --file=environment.yml
 # Activate the conda environment.
-conda activate shop-backend
+conda activate byte-backend
 ```
 
 ### Activating
 
 ```shell
 # Activate the conda environment.
-conda activate shop-backend
+conda activate byte-backend
 ```
 
 ### Updating
 
 ```shell
 # Activate the conda environment.
-conda activate shop-backend
+conda activate byte-backend
 # Update the environment.
 conda env update --file=environment.yml
 ```
