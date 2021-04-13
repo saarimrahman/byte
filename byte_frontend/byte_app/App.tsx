@@ -8,8 +8,9 @@ import Register from './screens/register';
 import Feed from './screens/feed';
 import InitialInfo from './screens/initial-info';
 import SinglePost from './screens/single-post';
+import {RootStackParamList} from './utils/navigation-types';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
@@ -20,7 +21,7 @@ export default function App() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Feed" component={Feed} />
         <Stack.Screen name="InitialInfo" component={InitialInfo} />
-        <Stack.Screen name="Post" component={SinglePost} />
+        <Stack.Screen name="SinglePost" component={SinglePost} />
       </Stack.Navigator>
     </NavigationContainer>
   );

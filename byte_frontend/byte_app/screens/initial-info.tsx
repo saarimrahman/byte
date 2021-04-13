@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {InitialInfoNavigationProp} from '../utils/navigation-types';
 
 interface Props {
-  navigation: StackNavigationProp<any>;
+  navigation: InitialInfoNavigationProp;
 }
 
 const InitialInfo = (props: Props) => {

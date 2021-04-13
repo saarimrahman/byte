@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
 import Post from '../components/post';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {FeedNavigationProp} from '../utils/navigation-types';
 
 const DATA = [
   {
@@ -41,12 +41,13 @@ const DATA = [
 ];
 
 interface Props {
-  navigation: StackNavigationProp<any>;
+  navigation: FeedNavigationProp;
 }
 
 const Feed = (props: Props) => {
-  console.log(props);
-  // TODO change from any
+  if (props) {
+    console.log('props');
+  }
   const renderPost = ({item}: any) => {
     return (
       <Post

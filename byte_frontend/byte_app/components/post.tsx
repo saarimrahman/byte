@@ -22,9 +22,9 @@ const Post = (props: Props) => {
       <View style={styles.title}>
         <TouchableOpacity
           onPress={() => {
-            navigation.push('Post', {
+            navigation.push('SinglePost', {
               title: props.title,
-              summary: props.long_summary,
+              caption: props.long_summary,
               source_url: props.source_url,
               image_url: props.image_url,
             });
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   container: {
     // flex: 1,
     marginVertical: 10,
-    backgroundColor: 'whitesmoke',
+    // backgroundColor: 'whitesmoke',
   },
   title: {
     height: 40,

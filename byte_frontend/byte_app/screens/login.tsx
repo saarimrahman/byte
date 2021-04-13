@@ -6,10 +6,10 @@ import {
   TouchableOpacity,
   TextInput,
 } from 'react-native';
-import {StackNavigationProp} from '@react-navigation/stack';
+import {LoginNavigationProp} from '../utils/navigation-types';
 
 interface Props {
-  navigation: StackNavigationProp<any>;
+  navigation: LoginNavigationProp;
 }
 
 const Login = (props: Props) => {
