@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface Props {
   title: string;
@@ -9,6 +10,7 @@ interface Props {
   caption: string;
   long_summary: string;
   source_url: string;
+  source: string;
 }
 
 const Post = (props: Props) => {
@@ -16,31 +18,44 @@ const Post = (props: Props) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{props.title}</Text>
-      <Image style={styles.image} source={{uri: props.image_url}} />
-      <Text style={styles.caption}>{props.caption}</Text>
-      <View style={styles.title}>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.push('SinglePost', {
-              title: props.title,
-              caption: props.long_summary,
-              source_url: props.source_url,
-              image_url: props.image_url,
-            });
-          }}>
-          <Text style={styles.button}>Read More</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Share')}>
-          <Text style={styles.button}>Share</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log('Favorite')}>
-          <Text style={styles.button}>Favorite</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => console.log(props.source_url)}>
-          <Text style={styles.button}>Source</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.push('SinglePost', {
+            title: props.title,
+            caption: props.long_summary,
+            source_url: props.source_url,
+            image_url: props.image_url,
+            source: props.source,
+          });
+        }}>
+        <View style={styles.sourceContainer}>
+          {/* <Image
+          style={styles.sourceLogo}
+          source={{
+            uri:
+              'https://i.pinimg.com/originals/5e/af/20/5eaf20e1a08c73f59d40ab3ba5bffaae.png',
+          }}
+        /> */}
+        </View>
+        <Image style={styles.image} source={{uri: props.image_url}} />
+
+        <Text style={styles.title}>{props.title}</Text>
+        <Text style={styles.source}>{props.source}</Text>
+
+        <Text style={styles.caption}>{props.caption}</Text>
+        <View style={styles.footer}>
+          <Text style={styles.source}>2 hours ago</Text>
+          <TouchableOpacity onPress={() => console.log('Favorite')}>
+            <Icon name="favorite-outline" size={25} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => console.log('Share')}>
+            <Icon name="ios-share" size={25} />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => console.log(props.source_url)}>
+            <Icon name="link" size={25} />
+          </TouchableOpacity>
+        </View>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -49,22 +64,27 @@ const styles = StyleSheet.create({
   container: {
     // flex: 1,
     marginVertical: 10,
-    // backgroundColor: 'whitesmoke',
+    marginHorizontal: 5,
+    borderColor: 'grey',
+    borderRadius: 10,
+    borderWidth: 0.5,
   },
   title: {
-    height: 40,
+    // height: 40,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     marginHorizontal: 10,
-    marginBottom: 10,
-    fontSize: 20,
+    // marginBottom: 1,
+    fontSize: 15,
+    fontWeight: 'bold',
+    color: 'black',
   },
   caption: {
     color: 'black',
     fontWeight: '300',
-    fontSize: 15,
+    fontSize: 12,
     marginHorizontal: 10,
     marginBottom: 5,
   },
@@ -74,13 +94,36 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 5,
-    backgroundColor: 'rgb(220, 220, 220)',
+    borderRadius: 5,
   },
-  button: {
-    color: 'blue',
-    fontFamily: 'Verdana',
+  footer: {
+    // color: 'blue',
+    // fontFamily: 'Verdana',
+    // fontSize: 10,
+    // textAlign: 'center',
+    marginHorizontal: 10,
+    marginBottom: 5,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    // paddingLeft: 250,
+  },
+  sourceContainer: {
+    flexDirection: 'row',
+  },
+  source: {
     fontSize: 10,
-    textAlign: 'center',
+    color: 'grey',
+    paddingLeft: 10,
+
+    // marginHorizontal: 10,
+  },
+  sourceLogo: {
+    // flex: 1,
+    height: 'auto',
+    width: 'auto',
+    paddingLeft: 50,
   },
 });
 

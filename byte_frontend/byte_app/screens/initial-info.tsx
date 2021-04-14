@@ -1,70 +1,82 @@
 import React, {useState} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {InitialInfoNavigationProp} from '../utils/navigation-types';
+import Tags from 'react-native-tags';
 
 interface Props {
   navigation: InitialInfoNavigationProp;
 }
 
 const InitialInfo = (props: Props) => {
-  const [profession, setProfession] = useState();
-  const [location, setLocation] = useState();
-  const [industry, setIndustry] = useState();
-  const [interest, setInterest] = useState();
+  const [profession, setProfession] = useState<string>();
+  const [location, setLocation] = useState<string>();
+  const [industry, setIndustry] = useState<string>();
+  const [interests, setInterests] = useState<string[]>([]);
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tell Us About Yourself</Text>
+
       <Text style={styles.inputLabel}>Profession</Text>
-      <Picker
+      <TextInput
         style={styles.inputBox}
-        selectedValue={profession}
-        onValueChange={(itemValue, _) => setProfession(itemValue)}>
-        <Picker.Item label="doctor" value="doctor" />
-        <Picker.Item label="sonographer" value="sonographer" />
-      </Picker>
+        onChangeText={setProfession}
+        value={profession}
+        placeholder="Profession"
+      />
+
       <Text style={styles.inputLabel}>Location </Text>
-      <Picker
+      <TextInput
         style={styles.inputBox}
-        selectedValue={location}
-        onValueChange={(itemValue, _) => setLocation(itemValue)}>
-        <Picker.Item label="Bay Area" value="Bay Area" />
-        <Picker.Item label="Sacramento" value="Sacramento" />
-      </Picker>
-      <Text style={styles.inputLabel}>Practice / Industry </Text>
-      <Picker
+        onChangeText={setLocation}
+        value={location}
+        placeholder="Location"
+      />
+
+      <Text style={styles.inputLabel}>Area of Practice</Text>
+      <TextInput
         style={styles.inputBox}
-        selectedValue={industry}
-        onValueChange={(itemValue, _) => setIndustry(itemValue)}>
-        <Picker.Item label="oncology" value="oncology" />
-        <Picker.Item label="pharmacy" value="pharmacy" />
-      </Picker>
+        onChangeText={setIndustry}
+        value={industry}
+        placeholder="Area of Practice"
+      />
+
       <Text style={styles.inputLabel}>Interest(s)</Text>
-      <Picker
-        style={styles.inputBox}
-        selectedValue={interest}
-        onValueChange={(itemValue, _) => setInterest(itemValue)}>
-        <Picker.Item label="Interest 1" value="Interest 1" />
-        <Picker.Item label="Interest 2" value="Interest 2" />
-        <Picker.Item label="Interest 3" value="Interest 3" />
-      </Picker>
-      <Picker
-        style={styles.inputBox}
-        selectedValue={interest}
-        onValueChange={(itemValue, _) => setInterest(itemValue)}>
-        <Picker.Item label="Interest 1" value="Interest 1" />
-        <Picker.Item label="Interest 2" value="Interest 2" />
-        <Picker.Item label="Interest 3" value="Interest 3" />
-      </Picker>
-      <Picker
-        style={styles.inputBox}
-        selectedValue={interest}
-        onValueChange={(itemValue, _) => setInterest(itemValue)}>
-        <Picker.Item label="Interest 1" value="Interest 1" />
-        <Picker.Item label="Interest 2" value="Interest 2" />
-        <Picker.Item label="Interest 3" value="Interest 3" />
-      </Picker>
+      <Text style={styles.inputHelp}>
+        Enter your interests below seperated by spaces.
+      </Text>
+      <Text style={styles.inputHelp}>Tap on an interest to remove it.</Text>
+
+      <Tags
+        textInputProps={{
+          placeholder: 'Enter your interests here',
+        }}
+        initialTags={['COVID-19']}
+        onChangeTags={setInterests}
+        onTagPress={(index, tagLabel, event, deleted) =>
+          console.log(
+            index,
+            tagLabel,
+            event,
+            deleted ? 'deleted' : 'not deleted',
+          )
+        }
+        containerStyle={styles.tagContainer}
+        inputStyle={styles.tagInput}
+        renderTag={({tag, index, onPress, deleteTagOnPress, readonly}) => (
+          <TouchableOpacity key={`${tag}-${index}`} onPress={onPress}>
+            <Text style={styles.tag}>{tag}</Text>
+          </TouchableOpacity>
+        )}
+      />
+
       <TouchableOpacity onPress={() => props.navigation.navigate('Feed')}>
         <Text style={styles.button}>Next</Text>
       </TouchableOpacity>
@@ -75,7 +87,6 @@ const InitialInfo = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'whitesmoke',
   },
   title: {
     color: 'black',
@@ -83,7 +94,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     margin: 10,
     paddingLeft: 20,
-    paddingTop: 40,
     textAlign: 'center',
   },
   inputLabel: {
@@ -98,12 +108,16 @@ const styles = StyleSheet.create({
     fontWeight: '100',
     backgroundColor: 'white',
     marginHorizontal: 30,
-    borderColor: 'silver',
     borderRadius: 5,
     borderWidth: 0.2,
     paddingLeft: 10,
     paddingVertical: 7,
     marginTop: 5,
+  },
+  inputHelp: {
+    fontSize: 10,
+    color: 'grey',
+    marginHorizontal: 30,
   },
   button: {
     color: 'white',
@@ -114,10 +128,37 @@ const styles = StyleSheet.create({
     fontWeight: '200',
     textAlign: 'center',
     marginHorizontal: 40,
-    borderColor: 'white',
-    borderRadius: 1,
-    borderWidth: 2,
-    backgroundColor: 'blue',
+    borderColor: '#fff',
+    borderRadius: 10,
+    borderWidth: 1,
+    backgroundColor: 'green',
+  },
+  tag: {
+    color: 'white',
+    fontFamily: 'Verdana',
+    // marginTop: 20,
+    padding: 5,
+    fontSize: 15,
+    fontWeight: '200',
+    textAlign: 'center',
+    // marginHorizontal: 40,
+    borderColor: '#fff',
+    borderRadius: 10,
+    borderWidth: 1,
+    backgroundColor: 'grey',
+  },
+  tagContainer: {
+    justifyContent: 'center',
+    marginHorizontal: 30,
+  },
+  tagInput: {
+    fontSize: 15,
+    fontWeight: '100',
+    backgroundColor: 'white',
+    borderRadius: 5,
+    borderWidth: 0.2,
+    paddingLeft: 10,
+    color: 'black',
   },
 });
 

@@ -11,6 +11,7 @@ export type RootStackParamList = {
     image_url: string;
     caption: string;
     source_url: string;
+    source: string;
   };
 };
 

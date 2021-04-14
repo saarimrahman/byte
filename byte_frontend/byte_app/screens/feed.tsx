@@ -7,6 +7,7 @@ const DATA = [
   {
     id: 0,
     source_url: 'https://www.medscape.com/viewarticle/948633',
+    source: 'MedScape',
     long_summary:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi sed pharetra hendrerit. Curabitur lobortis leo dolor, nec posuere sapien bibendum a. Etiam aliquam luctus tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque vitae ligula in velit cursus posuere in id neque. Duis consequat tempus magna id ultricies. Aliquam erat volutpat. Integer vitae elit non enim mattis dignissim. Vestibulum mollis sapien erat.',
     headline: 'Millennials Turning to Telehealth, Online Research',
@@ -18,6 +19,7 @@ const DATA = [
   {
     id: 1,
     source_url: 'https://www.medscape.com/viewarticle/948632',
+    source: 'MedScape',
     long_summary:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi sed pharetra hendrerit. Curabitur lobortis leo dolor, nec posuere sapien bibendum a. Etiam aliquam luctus tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque vitae ligula in velit cursus posuere in id neque. Duis consequat tempus magna id ultricies. Aliquam erat volutpat. Integer vitae elit non enim mattis dignissim. Vestibulum mollis sapien erat.',
     headline:
@@ -30,6 +32,7 @@ const DATA = [
   {
     id: 2,
     source_url: 'https://www.medscape.com/viewarticle/948630',
+    source: 'MedScape',
     long_summary:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum nisi sed pharetra hendrerit. Curabitur lobortis leo dolor, nec posuere sapien bibendum a. Etiam aliquam luctus tempus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Quisque vitae ligula in velit cursus posuere in id neque. Duis consequat tempus magna id ultricies. Aliquam erat volutpat. Integer vitae elit non enim mattis dignissim. Vestibulum mollis sapien erat.',
     headline: 'CDC: Get Vaccinated and You Can Travel',
@@ -56,6 +59,7 @@ const Feed = (props: Props) => {
         image_url={item.image_url}
         source_url={item.source_url}
         long_summary={item.long_summary}
+        source={item.source}
       />
     );
   };

@@ -53,11 +53,11 @@ const Login = (props: Props) => {
       />
 
       <TouchableOpacity onPress={() => logInPressed()}>
-        <Text style={styles.loginButton}>Log in</Text>
+        <Text style={styles.loginButton}>Log In</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => props.navigation.navigate('Register')}>
-        <Text style={styles.loginButton}>Sign Up</Text>
+        <Text style={styles.signUpButton}>Create New Account</Text>
       </TouchableOpacity>
 
       <Text style={styles.forgotPassword}>Forgot password?</Text>
@@ -68,25 +68,24 @@ const Login = (props: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'whitesmoke',
   },
   title: {
-    color: 'black',
+    // color: 'black',
     fontFamily: 'Verdana',
     fontSize: 45,
     margin: 10,
     paddingLeft: 20,
     paddingTop: 40,
     textAlign: 'center',
+    // fontStyle: 'italic',
   },
   inputLabel: {
     fontFamily: 'Verdana',
-    fontSize: 20,
-    fontWeight: '100',
+    fontSize: 15,
+    fontWeight: 'bold',
     marginTop: 5,
     marginHorizontal: 30,
   },
-
   toggletext: {
     fontSize: 30,
     marginTop: 5,
@@ -97,7 +96,7 @@ const styles = StyleSheet.create({
     fontWeight: '100',
     backgroundColor: 'white',
     marginHorizontal: 30,
-    borderColor: 'silver',
+    // borderColor: 'silver',
     borderRadius: 5,
     borderWidth: 0.2,
     paddingLeft: 10,
@@ -112,10 +111,24 @@ const styles = StyleSheet.create({
     fontWeight: '200',
     textAlign: 'center',
     marginHorizontal: 40,
-    borderColor: 'white',
-    borderRadius: 1,
-    borderWidth: 2,
+    borderColor: '#fff',
+    borderRadius: 10,
+    borderWidth: 1,
     backgroundColor: 'blue',
+  },
+  signUpButton: {
+    color: 'white',
+    fontFamily: 'Verdana',
+    marginTop: 20,
+    padding: 10,
+    fontSize: 20,
+    fontWeight: '200',
+    textAlign: 'center',
+    marginHorizontal: 40,
+    borderColor: '#fff',
+    borderRadius: 10,
+    borderWidth: 1,
+    backgroundColor: 'green',
   },
   forgotPassword: {
     color: 'blue',
@@ -126,10 +139,6 @@ const styles = StyleSheet.create({
     fontWeight: '200',
     textAlign: 'center',
     marginHorizontal: 40,
-    // borderColor: "white",
-    // borderRadius: 1,
-    // borderWidth: 2,
-    // backgroundColor: "blue"
   },
   showPassword: {
     paddingTop: 10,
@@ -138,6 +147,7 @@ const styles = StyleSheet.create({
     height: 45,
   },
   toggleText: {
+    paddingTop: 5,
     paddingRight: 30,
     color: 'blue',
   },
