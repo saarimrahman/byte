@@ -1,0 +1,29 @@
+type Post @model {
+  id: ID!
+  datetime: AWSDateTime!
+  type: String!
+  headline: String!
+  short_summary: String!
+  long_summary: String!
+  full_text: String!
+  url: String!
+  picture_url: String!
+  tags: [String!]
+}
+
+type User @model {
+  id: ID!
+  admin: Boolean!
+  date_created: AWSDateTime
+  username: String!
+  email: String
+  salt: String
+  password: String
+  birthday: String
+  location: String
+  gender: String
+  industry: String
+  profession: String
+  picture_url: String
+  interests: [String]
+}
